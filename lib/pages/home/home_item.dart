@@ -11,27 +11,31 @@ class HomeItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bgColor = _model.color;
-    return Container(
-      decoration: BoxDecoration(
+    return GestureDetector(
+      onTap: () {
+        print(_model.toString());
+      },
+      child: Card(
         /// 背景色
         color: bgColor,
 
-        /// 圆角
-        borderRadius: BorderRadius.circular(20.px),
+        /// 阴影区域
+        elevation: 20.px,
 
-        /// 渐变
-        gradient: LinearGradient(colors: [
-          bgColor.withOpacity(.5),
-          bgColor,
-        ]),
-      ),
-      alignment: Alignment.center,
-      child: Text(
-        _model.title,
-        style: Theme.of(context).textTheme.bodyText1.copyWith(
-              fontWeight: FontWeight.bold,
-              fontSize: AppTheme.largeFontSize,
-            ),
+        /// 设置圆角
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(20.px),
+          ),
+        ),
+        child: Center(
+          child: Text(
+            _model.title,
+            style: Theme.of(context).textTheme.bodyText1.copyWith(
+                  fontWeight: FontWeight.bold,
+                ),
+          ),
+        ),
       ),
     );
   }

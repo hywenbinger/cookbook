@@ -6,8 +6,9 @@ import 'package:flutter/services.dart';
 class JsonParse {
   static Future<List<CategoryModel>> getCategoryData() async {
     /// 1.加载json文件
-    final String jsonString =
-        await rootBundle.loadString("assets/json/category.json");
+    final String jsonString = await Future.delayed(Duration(seconds: 2), () {
+      return rootBundle.loadString("assets/json/category.json");
+    });
 
     /// 2.将jsonString转成Map
     final result = json.decode(jsonString);
