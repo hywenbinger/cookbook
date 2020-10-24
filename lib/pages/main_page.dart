@@ -11,7 +11,7 @@ import 'home/home_page.dart';
 ///     2.BottomNavigationBar
 ///     3.BottomNavigationBarItem
 class MainPage extends StatefulWidget {
-  static const String routeName = "/main";
+  static const String routeName = "/";
 
   @override
   _MainPageState createState() => _MainPageState();

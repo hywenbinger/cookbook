@@ -1,4 +1,5 @@
 import 'package:cookbook/model/home_item_model.dart';
+import 'package:cookbook/pages/meal/meal_page.dart';
 import 'package:cookbook/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:cookbook/utils/screen/int_extension.dart';
@@ -8,6 +9,8 @@ import 'package:cookbook/utils/screen/int_extension.dart';
 /// 知识点：
 ///     1.GestureDetector
 ///     2.Card
+///     3.Navigator.of(context)
+///     4.Theme.of(context)
 class HomeItem extends StatelessWidget {
   final HomeItemModel _model;
 
@@ -18,7 +21,10 @@ class HomeItem extends StatelessWidget {
     final bgColor = _model.color;
     return GestureDetector(
       onTap: () {
-        print(_model.toString());
+        print("点击了-->${_model.toString()}");
+
+        /// 跳转到【MealPage】
+        Navigator.of(context).pushNamed(MealPage.routeName, arguments: _model);
       },
       child: Card(
         /// 背景色

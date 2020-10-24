@@ -6,7 +6,7 @@ import 'package:cookbook/utils/screen/int_extension.dart';
 
 /// 首页
 class HomePage extends StatefulWidget {
-  static const String routeName = "/main/home";
+  static const String routeName = "/home";
 
   @override
   _HomePageState createState() => _HomePageState();

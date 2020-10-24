@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 /// 收藏页面
 class FavoritePage extends StatefulWidget {
-  static const String routeName = "/main/favorite";
+  static const String routeName = "/favorite";
 
   @override
   _FavoritePageState createState() => _FavoritePageState();

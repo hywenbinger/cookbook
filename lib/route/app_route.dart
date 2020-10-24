@@ -1,6 +1,8 @@
-import 'file:///D:/Work/Flutter/workspace/cookbook/lib/pages/favorite/favorite_page.dart';
-import 'file:///D:/Work/Flutter/workspace/cookbook/lib/pages/home/home_page.dart';
+import 'package:cookbook/pages/detail/detail_page.dart';
+import 'package:cookbook/pages/favorite/favorite_page.dart';
+import 'package:cookbook/pages/home/home_page.dart';
 import 'package:cookbook/pages/main_page.dart';
+import 'package:cookbook/pages/meal/meal_page.dart';
 import 'package:flutter/material.dart';
 
 /// 路由管理
@@ -16,6 +18,8 @@ class AppRoute {
     MainPage.routeName: (context) => MainPage(),
     HomePage.routeName: (context) => HomePage(),
     FavoritePage.routeName: (context) => FavoritePage(),
+    MealPage.routeName: (context) => MealPage(),
+    DetailPage.routeName: (context) => DetailPage(),
   };
 
   static final RouteFactory generateRoute = (settings) {
