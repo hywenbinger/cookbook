@@ -1,6 +1,5 @@
-import 'package:cookbook/model/home_item_model.dart';
-import 'package:cookbook/pages/meal/meal_page.dart';
-import 'package:cookbook/theme/app_theme.dart';
+import 'package:cookbook/model/meal_category_model.dart';
+import 'package:cookbook/pages/list/list_page.dart';
 import 'package:flutter/material.dart';
 import 'package:cookbook/utils/screen/int_extension.dart';
 
@@ -9,10 +8,10 @@ import 'package:cookbook/utils/screen/int_extension.dart';
 /// 知识点：
 ///     1.GestureDetector
 ///     2.Card
-///     3.Navigator.of(context)
+///     3.Navigator.of(context).pushNamed()
 ///     4.Theme.of(context)
 class HomeItem extends StatelessWidget {
-  final HomeItemModel _model;
+  final MealCategoryModel _model;
 
   HomeItem(this._model);
 
@@ -23,20 +22,20 @@ class HomeItem extends StatelessWidget {
       onTap: () {
         print("点击了-->${_model.toString()}");
 
-        /// 跳转到【MealPage】
-        Navigator.of(context).pushNamed(MealPage.routeName, arguments: _model);
+        /// 跳转到【美食列表页面】
+        Navigator.of(context).pushNamed(ListPage.routeName, arguments: _model);
       },
       child: Card(
         /// 背景色
         color: bgColor,
 
         /// 阴影区域
-        elevation: 20.px,
+        elevation: 2.dpr,
 
         /// 设置圆角
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(
-            Radius.circular(20.px),
+            Radius.circular(5.dpr),
           ),
         ),
         child: Center(

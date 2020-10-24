@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-/// 首页Item模型
-class HomeItemModel {
+/// 【美食分类】的数据模型
+class MealCategoryModel {
   String _id = "";
   String _title = "";
   String _colorString = "";
@@ -13,7 +13,7 @@ class HomeItemModel {
 
   String get id => _id;
 
-  HomeItemModel.fromJson(Map<String, dynamic> data) {
+  MealCategoryModel.fromJson(Map<String, dynamic> data) {
     _id = data['id'];
     _title = data['title'];
     _colorString = data['color'];
@@ -25,6 +25,6 @@ class HomeItemModel {
 
   @override
   String toString() {
-    return 'HomeItemModel{_id: $_id, _title: $_title, _color: $_color}';
+    return 'MealCategoryModel{_id: $_id, _title: $_title, _color: $_color}';
   }
 }

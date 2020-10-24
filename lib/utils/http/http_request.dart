@@ -21,7 +21,7 @@ class HttpRequest {
       final response = await _dio.request(url,
           queryParameters: params, options: Options(method: method));
       result = response.data;
-      print("响应数据： ${response.toString()}");
+      // print("响应数据： ${response.toString()}");
       if (response.statusCode == HttpStatus.ok) {
         if (onSuccess != null) {
           onSuccess(result);
@@ -31,7 +31,7 @@ class HttpRequest {
       }
     } on DioError catch (e) {
       result = "";
-      print("请求出错：  ${e.toString()}");
+      // print("请求出错：  ${e.toString()}");
       if (onError != null) {
         onError(e.toString());
       }

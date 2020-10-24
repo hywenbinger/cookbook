@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:cookbook/model/home_item_model.dart';
+import 'package:cookbook/model/meal_category_model.dart';
 import 'package:flutter/services.dart';
 
 /// Json解析工具类
@@ -10,10 +10,10 @@ import 'package:flutter/services.dart';
 ///   2.rootBundle.loadString()
 ///   3.json.decode()
 class JsonParse {
-  /// 解析首页数据
-  static Future<List<HomeItemModel>> getHomeData() async {
+  /// 解析首页数据（美食分类数据）
+  static Future<List<MealCategoryModel>> getMealCategoryData() async {
     /// 1.加载json文件
-    final String jsonString = await Future.delayed(Duration(seconds: 2), () {
+    final String jsonString = await Future.delayed(Duration(seconds: 1), () {
       return rootBundle.loadString("assets/json/category.json");
     });
 
@@ -24,10 +24,10 @@ class JsonParse {
     final resultList = result["category"];
 
     /// 4.将List中的内容转成对象
-    List<HomeItemModel> list = [];
+    List<MealCategoryModel> list = [];
     for (var data in resultList) {
-      final HomeItemModel model = HomeItemModel.fromJson(data);
-      print(model.toString());
+      final MealCategoryModel model = MealCategoryModel.fromJson(data);
+      // print(model.toString());
       list.add(model);
     }
     return list;
