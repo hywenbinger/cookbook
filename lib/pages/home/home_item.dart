@@ -1,10 +1,15 @@
-import 'package:cookbook/model/category_item.dart';
+import 'package:cookbook/model/home_item_model.dart';
 import 'package:cookbook/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:cookbook/utils/screen/int_extension.dart';
 
+/// 首页Item
+///
+/// 知识点：
+///     1.GestureDetector
+///     2.Card
 class HomeItem extends StatelessWidget {
-  final CategoryModel _model;
+  final HomeItemModel _model;
 
   HomeItem(this._model);
 

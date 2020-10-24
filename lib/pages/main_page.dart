@@ -4,6 +4,12 @@ import 'package:flutter/material.dart';
 
 import 'home/home_page.dart';
 
+/// 应用启动后，显示的主页
+///
+/// 知识点
+///     1.IndexedStack
+///     2.BottomNavigationBar
+///     3.BottomNavigationBarItem
 class MainPage extends StatefulWidget {
   static const String routeName = "/main";
 

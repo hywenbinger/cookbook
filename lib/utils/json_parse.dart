@@ -1,10 +1,17 @@
 import 'dart:convert';
 
-import 'package:cookbook/model/category_item.dart';
+import 'package:cookbook/model/home_item_model.dart';
 import 'package:flutter/services.dart';
 
+/// Json解析工具类
+///
+/// 知识点：
+///   1.Future
+///   2.rootBundle.loadString()
+///   3.json.decode()
 class JsonParse {
-  static Future<List<CategoryModel>> getCategoryData() async {
+  /// 解析首页数据
+  static Future<List<HomeItemModel>> getHomeData() async {
     /// 1.加载json文件
     final String jsonString = await Future.delayed(Duration(seconds: 2), () {
       return rootBundle.loadString("assets/json/category.json");
@@ -17,9 +24,9 @@ class JsonParse {
     final resultList = result["category"];
 
     /// 4.将List中的内容转成对象
-    List<CategoryModel> list = [];
+    List<HomeItemModel> list = [];
     for (var data in resultList) {
-      final CategoryModel model = CategoryModel.fromJson(data);
+      final HomeItemModel model = HomeItemModel.fromJson(data);
       print(model.toString());
       list.add(model);
     }

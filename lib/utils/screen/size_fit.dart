@@ -1,5 +1,11 @@
 import 'dart:ui';
 
+/// 屏幕适配工具类
+///
+/// 知识点：
+///     1.window
+///     2.devicePixelRatio/dpr
+///     2.屏幕适配原理
 class SizeFit {
   /// 屏幕物理宽度
   static double screenWidth;

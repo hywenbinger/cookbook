@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// 主题管理
 class AppTheme {
   /// 公用属性
   static const double smallFontSize = 16;

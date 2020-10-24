@@ -1,4 +1,4 @@
-import 'package:cookbook/model/category_item.dart';
+import 'package:cookbook/model/home_item_model.dart';
 import 'package:cookbook/pages/home/home_item.dart';
 import 'package:cookbook/utils/json_parse.dart';
 import 'package:flutter/material.dart';
@@ -24,11 +24,17 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
+/// 首页的内容
+///
+/// 知识点：
+///     1.FutureBuilder
+///     2.GridView
+///     3.Json解析
 class HomeContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<List<CategoryModel>>(
-      future: JsonParse.getCategoryData(),
+    return FutureBuilder<List<HomeItemModel>>(
+      future: JsonParse.getHomeData(),
       builder: (context, snapshot) {
         /// 请求数据中
         if (!snapshot.hasData) {

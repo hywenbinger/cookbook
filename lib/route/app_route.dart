@@ -3,7 +3,11 @@ import 'file:///D:/Work/Flutter/workspace/cookbook/lib/pages/home/home_page.dart
 import 'package:cookbook/pages/main_page.dart';
 import 'package:flutter/material.dart';
 
-class AppRouter {
+/// 路由管理
+///
+/// 知识点：
+///     1.路由
+class AppRoute {
   /// 默认启动页面对应的路由
   static final String initialRoute = MainPage.routeName;
 
