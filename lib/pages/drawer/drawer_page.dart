@@ -1,3 +1,4 @@
+import 'package:cookbook/pages/filter/filter_page.dart';
 import 'package:cookbook/theme/app_theme.dart';
 import 'package:cookbook/utils/screen/int_extension.dart';
 import 'package:flutter/material.dart';
@@ -12,7 +13,7 @@ class DrawerContent extends StatelessWidget {
           context,
           Icon(Icons.restaurant),
           "进餐",
-              () {
+          () {
             ///关闭Drawer
             Navigator.of(context).pop();
           },
@@ -21,8 +22,9 @@ class DrawerContent extends StatelessWidget {
           context,
           Icon(Icons.settings),
           "过滤",
-              () {
-            Navigator.of(context).pop();
+          () {
+            ///跳转到【美食过滤界面】
+            Navigator.of(context).pushNamed(FilterPage.routeName);
           },
         ),
       ],

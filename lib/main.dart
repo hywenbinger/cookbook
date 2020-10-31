@@ -2,6 +2,7 @@ import 'package:cookbook/route/app_route.dart';
 import 'package:cookbook/theme/app_theme.dart';
 import 'package:cookbook/utils/screen/size_fit.dart';
 import 'package:cookbook/viewmodel/favor_view_model.dart';
+import 'package:cookbook/viewmodel/filter_view_model.dart';
 import 'package:cookbook/viewmodel/meal_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -13,14 +14,24 @@ import 'package:provider/provider.dart';
 ///     2.路由设置
 ///     3.Provider共享数据
 ///     4.MultiProvider
-///     5.ChangeNotifierProvider
+///     5.ChangeNotifierProvider(懒加载)
+///     6.ChangeNotifierProxyProvider
 void main() {
   runApp(MultiProvider(
     child: MyApp(),
     providers: [
+      /// TODO：FilterViewModel声明在MealViewModel后，打开列表界面会报错
       ChangeNotifierProvider(
-        /// 这里是懒加载
+        create: (context) => FilterViewModel(),
+      ),
+
+      /// 使两个 ViewModel 产生依赖
+      ChangeNotifierProxyProvider<FilterViewModel, MealViewModel>(
         create: (context) => MealViewModel(),
+        update: (context, filterVM, mealVM) {
+          mealVM.updateFilterViewModel(filterVM);
+          return mealVM;
+        },
       ),
       ChangeNotifierProvider(
         create: (context) => FavorViewModel(),

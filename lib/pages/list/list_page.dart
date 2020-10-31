@@ -1,5 +1,6 @@
 import 'package:cookbook/model/meal_category_model.dart';
 import 'package:cookbook/model/meal_detail_model.dart';
+import 'package:cookbook/theme/app_theme.dart';
 import 'package:cookbook/viewmodel/meal_view_model.dart';
 import 'package:cookbook/widgets/meal_item.dart';
 import 'package:flutter/foundation.dart';
@@ -19,7 +20,6 @@ class ListPage extends StatelessWidget {
     /// 获取从【HomePage】传递过来的数据
     final mealCategoryModel =
         ModalRoute.of(context).settings.arguments as MealCategoryModel;
-    print("MealPage-->${mealCategoryModel.toString()}");
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -56,6 +56,17 @@ class ListContent extends StatelessWidget {
       },
       shouldRebuild: (prev, next) => !listEquals(prev, next),
       builder: (context, mealList, child) {
+        if (mealList.length == 0) {
+          return Center(
+            child: Text(
+              "无相关美食",
+              style: TextStyle(
+                fontSize: AppTheme.largeFontSize,
+                color: Colors.black,
+              ),
+            ),
+          );
+        }
         return ListView.builder(
           itemCount: mealList.length,
           itemBuilder: (context, index) {
