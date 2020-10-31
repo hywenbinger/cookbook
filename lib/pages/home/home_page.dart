@@ -6,14 +6,9 @@ import 'package:cookbook/utils/screen/int_extension.dart';
 
 /// 首页
 /// 展示：美食分类
-class HomePage extends StatefulWidget {
+class HomePage extends StatelessWidget {
   static const String routeName = "/home";
 
-  @override
-  _HomePageState createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

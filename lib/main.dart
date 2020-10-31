@@ -1,6 +1,7 @@
 import 'package:cookbook/route/app_route.dart';
 import 'package:cookbook/theme/app_theme.dart';
 import 'package:cookbook/utils/screen/size_fit.dart';
+import 'package:cookbook/viewmodel/favor_view_model.dart';
 import 'package:cookbook/viewmodel/meal_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -18,8 +19,11 @@ void main() {
     child: MyApp(),
     providers: [
       ChangeNotifierProvider(
-        /// 懒加载
+        /// 这里是懒加载
         create: (context) => MealViewModel(),
+      ),
+      ChangeNotifierProvider(
+        create: (context) => FavorViewModel(),
       ),
     ],
   ));

@@ -1,8 +1,10 @@
 import 'package:cookbook/model/meal_detail_model.dart';
 import 'package:cookbook/pages/detail/detail_page.dart';
 import 'package:cookbook/theme/app_theme.dart';
+import 'package:cookbook/viewmodel/favor_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:cookbook/utils/screen/int_extension.dart';
+import 'package:provider/provider.dart';
 
 /// 美食列表Item展示
 ///
@@ -46,7 +48,7 @@ class MealItem extends StatelessWidget {
                 children: [
                   _buildItem(Icons.schedule, "${_model.duration}分钟"),
                   _buildItem(Icons.restaurant, _model.complexityString),
-                  _buildItem(Icons.favorite_border, "未收藏"),
+                  _buildFavorItem(),
                 ],
               ),
             ),
@@ -62,6 +64,39 @@ class MealItem extends StatelessWidget {
         Icon(iconData),
         Text(operation),
       ],
+    );
+  }
+
+  /// 使用Consumer获取收藏列表共享数据
+  Widget _buildFavorItem() {
+    return Consumer<FavorViewModel>(
+      builder: (context, viewModel, child) {
+        /// 1.判断是否是收藏状态
+        final isFavor = viewModel.isFavor(_model);
+
+        /// 2.设置不同的图标
+        final iconData = isFavor ? Icons.favorite : Icons.favorite_border;
+
+        /// 3.设置图标的颜色
+        final iconColor = isFavor ? Colors.red : Colors.black;
+
+        /// 4.设置不同文本
+        final msg = isFavor ? "已收藏" : "未收藏";
+        return GestureDetector(
+          onTap: () {
+            viewModel.handle(_model);
+          },
+          child: Row(
+            children: [
+              Icon(
+                iconData,
+                color: iconColor,
+              ),
+              Text(msg),
+            ],
+          ),
+        );
+      },
     );
   }
 
