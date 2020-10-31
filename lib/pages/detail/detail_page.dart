@@ -1,6 +1,5 @@
 import 'package:cookbook/model/meal_detail_model.dart';
 import 'package:cookbook/theme/app_theme.dart';
-import 'package:cookbook/utils/screen/size_fit.dart';
 import 'package:cookbook/viewmodel/favor_view_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

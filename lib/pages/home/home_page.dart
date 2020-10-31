@@ -1,11 +1,18 @@
 import 'package:cookbook/model/meal_category_model.dart';
 import 'package:cookbook/pages/home/home_item.dart';
+import 'package:cookbook/theme/app_theme.dart';
 import 'package:cookbook/utils/json_parse.dart';
 import 'package:flutter/material.dart';
 import 'package:cookbook/utils/screen/int_extension.dart';
 
-/// 首页
-/// 展示：美食分类
+/// 首页，展示美食分类
+///
+/// 知识点：
+///     1.FutureBuilder
+///     2.GridView
+///     3.Json解析
+///     4.Drawer
+///     5.Builder/LayoutBuilder
 class HomePage extends StatelessWidget {
   static const String routeName = "/home";
 
@@ -16,19 +23,17 @@ class HomePage extends StatelessWidget {
         title: Text("美食广场"),
       ),
       body: HomeContent(),
+      drawer: Drawer(
+        child: DrawerContent(),
+      ),
     );
   }
 }
 
-/// 首页的内容
-///
-/// 知识点：
-///     1.FutureBuilder
-///     2.GridView
-///     3.Json解析
 class HomeContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    /// 使用FutureBuilder，方便获取异步数据，并构建Widget
     return FutureBuilder<List<MealCategoryModel>>(
       future: JsonParse.getMealCategoryData(),
       builder: (context, snapshot) {
@@ -63,6 +68,64 @@ class HomeContent extends StatelessWidget {
           },
         );
       },
+    );
+  }
+}
+
+class DrawerContent extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        _buildHeaderView(context),
+        _buildListTile(
+          context,
+          Icon(Icons.restaurant),
+          "进餐",
+          () {
+            ///关闭Drawer
+            Navigator.of(context).pop();
+          },
+        ),
+        _buildListTile(
+          context,
+          Icon(Icons.settings),
+          "过滤",
+          () {
+            Navigator.of(context).pop();
+          },
+        ),
+      ],
+    );
+  }
+
+  Widget _buildHeaderView(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      height: 40.dpr,
+      color: Colors.orange,
+      // margin: EdgeInsets.only(bottom: 10.dpr),
+      alignment: Alignment(0, 0.5),
+      child: Text(
+        "开始动手",
+        style: TextStyle(
+          fontSize: AppTheme.largeFontSize,
+        ),
+      ),
+    );
+  }
+
+  Widget _buildListTile(
+      BuildContext context, Widget icon, String title, Function handler) {
+    return ListTile(
+      leading: icon,
+      title: Text(
+        title,
+        style: TextStyle(
+          fontSize: AppTheme.normalFontSize,
+        ),
+      ),
+      onTap: handler,
     );
   }
 }
