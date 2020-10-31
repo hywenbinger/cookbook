@@ -10,6 +10,7 @@ import 'package:cookbook/utils/screen/int_extension.dart';
 ///     1.Hero
 ///     2.Navigator.of(context).push()
 ///     3.PageRouteBuilder
+///     4.Stack
 class MealItem extends StatelessWidget {
   final MealDetailModel _model;
 
@@ -43,9 +44,9 @@ class MealItem extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  buildItem(Icons.schedule, "${_model.duration}分钟"),
-                  buildItem(Icons.restaurant, _model.complexityString),
-                  buildItem(Icons.favorite, "未收藏"),
+                  _buildItem(Icons.schedule, "${_model.duration}分钟"),
+                  _buildItem(Icons.restaurant, _model.complexityString),
+                  _buildItem(Icons.favorite, "未收藏"),
                 ],
               ),
             ),
@@ -55,7 +56,7 @@ class MealItem extends StatelessWidget {
     );
   }
 
-  Row buildItem(IconData iconData, String operation) {
+  Row _buildItem(IconData iconData, String operation) {
     return Row(
       children: [
         Icon(iconData),
