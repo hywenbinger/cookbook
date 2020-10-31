@@ -1,4 +1,5 @@
 import 'file:///D:/Work/Flutter/workspace/cookbook/lib/pages/favorite/favorite_page.dart';
+import 'package:cookbook/pages/drawer/drawer_page.dart';
 import 'package:cookbook/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
@@ -10,6 +11,7 @@ import 'home/home_page.dart';
 ///     1.IndexedStack
 ///     2.BottomNavigationBar
 ///     3.BottomNavigationBarItem
+///     4.Drawer
 class MainPage extends StatefulWidget {
   static const String routeName = "/";
 
@@ -45,6 +47,9 @@ class _MainPageState extends State<MainPage> {
             _currentIndex = index;
           });
         },
+      ),
+      drawer: Drawer(
+        child: DrawerContent(),
       ),
     );
   }
