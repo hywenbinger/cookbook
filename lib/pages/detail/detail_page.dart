@@ -10,7 +10,7 @@ import 'package:cookbook/utils/screen/int_extension.dart';
 /// 知识点：
 ///     1.Hero动画的使用
 ///     2.SingleChildScrollView
-///     3.ListView
+///     3.ListView、ListTile
 ///     4.ScrollView、Column、ListView嵌套问题
 ///     5.MediaQuery.of(context).size
 class DetailPage extends StatelessWidget {
@@ -22,6 +22,7 @@ class DetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         title: Text(_model.title),
@@ -38,6 +39,14 @@ class DetailPage extends StatelessWidget {
               height: 5.dpr,
             )
           ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          print("点击");
+        },
+        child: Icon(
+          Icons.favorite_border,
         ),
       ),
     );
@@ -62,7 +71,7 @@ class DetailPage extends StatelessWidget {
       context,
       _model.ingredients,
       (context, index) {
-        return _buildMaterialItem(_model.steps[index]);
+        return _buildMaterialItem(_model.ingredients[index]);
       },
     );
   }
@@ -96,29 +105,17 @@ class DetailPage extends StatelessWidget {
 
   /// 制作步骤的Item
   Widget _buildProcessItem(int index, String content) {
-    return Padding(
-      padding: EdgeInsets.fromLTRB(4.dpr, 3.dpr, 4.dpr, 3.dpr),
-      child: Row(
-        children: [
-          CircleAvatar(
-            child: Text(
-              "#$index",
-            ),
-          ),
-          SizedBox(
-            width: 5.dpr,
-          ),
-          Container(
-            child: Text(
-              content+"222222222222222222222222222222222222222222222222222",
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-              style: TextStyle(
-                fontSize: AppTheme.smallFontSize,
-              ),
-            ),
-          ),
-        ],
+    return ListTile(
+      leading: CircleAvatar(
+        child: Text(
+          "#$index",
+        ),
+      ),
+      title: Text(
+        content,
+        style: TextStyle(
+          fontSize: AppTheme.smallFontSize,
+        ),
       ),
     );
   }

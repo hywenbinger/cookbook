@@ -46,7 +46,7 @@ class MealItem extends StatelessWidget {
                 children: [
                   _buildItem(Icons.schedule, "${_model.duration}分钟"),
                   _buildItem(Icons.restaurant, _model.complexityString),
-                  _buildItem(Icons.favorite, "未收藏"),
+                  _buildItem(Icons.favorite_border, "未收藏"),
                 ],
               ),
             ),
